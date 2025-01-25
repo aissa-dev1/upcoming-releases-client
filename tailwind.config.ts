@@ -15,6 +15,18 @@ const config: Config = {
           DEFAULT: "var(--primary)",
           foreground: "var(--primary-foreground)",
         },
+        gray: {
+          background: "var(--gray-background)",
+          foreground: "var(--gray-foreground)",
+        },
+      },
+      spacing: {
+        sm: "var(--spacing-sm)",
+        md: "var(--spacing-md)",
+        lg: "var(--spacing-lg)",
+        xl: "var(--spacing-xl)",
+        "2xl": "var(--spacing-2xl)",
+        "3xl": "var(--spacing-3xl)",
       },
     },
     container: {
