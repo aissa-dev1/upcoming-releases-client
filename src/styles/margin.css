@@ -1,0 +1,3 @@
+.footer__safe__area {
+  margin-top: calc(var(--footer-height) / 2);
+}
