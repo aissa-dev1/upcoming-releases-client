@@ -1,13 +1,16 @@
-import Container from "@/components/reusable/container";
-import NavBar from "@/components/reusable/nav-bar";
+import Container from "@/components/container";
+import Footer from "@/components/footer";
+import NavBar from "@/components/nav-bar";
+import ReleasesTabList from "@/components/pages/home/releases-tab-list";
 
 export default function Home() {
   return (
     <>
       <NavBar />
-      <Container className="pt-[calc(var(--navbar-height)*1.25)]">
-        <p>Hello world!</p>
+      <Container className="flex flex-col gap-lg header__safe__area">
+        <ReleasesTabList />
       </Container>
+      <Footer />
     </>
   );
 }
