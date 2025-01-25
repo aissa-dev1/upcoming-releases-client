@@ -1,6 +1,6 @@
-import Container from "../container";
 import Bars3Icon from "@/components/icons/outline/bars3";
 import NavBarSearchContainer from "./search-container";
+import Container from "../container";
 
 export default function NavBar() {
   return (
