@@ -1,0 +1,3 @@
+.header__safe__area {
+  padding-top: calc(var(--navbar-height) * 2);
+}
