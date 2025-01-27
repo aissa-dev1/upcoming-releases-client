@@ -1,24 +1,9 @@
 import { random } from "@/utils/random";
-import {
-  ReleaseCategoryContainer,
-  ReleaseCategoryContainerProps,
-} from "./release-category-container";
-
-const releasesData: ReleaseCategoryContainerProps[] = [
-  {
-    heading: "Jan, 2025",
-    categoryList: [
-      {
-        title: "Death Note",
-        description: "Psychological",
-        tags: ["Anime slayer"],
-      },
-    ],
-  },
-];
+import { ReleaseCategoryContainer } from "./release-category-container";
+import { animeReleasesData } from "@/data/releases-data";
 
 export default function AnimeReleases() {
-  return releasesData.map((release) => (
+  return animeReleasesData.map((release) => (
     <ReleaseCategoryContainer key={random.strongId()} {...release} />
   ));
 }
