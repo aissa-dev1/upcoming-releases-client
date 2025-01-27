@@ -2,7 +2,7 @@
 
 import TabList from "@/components/tab-list";
 import { useEffect, useState } from "react";
-import GameReleases from "./game-releases";
+import GamesReleases from "./games-releases";
 import MoviesReleases from "./movies-releases";
 import AnimeReleases from "./anime-releases";
 
@@ -15,12 +15,16 @@ const releasesTabs = [
 export default function ReleasesTabList() {
   const [tabValue, setTabValue] = useState("games");
 
-  useEffect(() => {
+  function getStoredTabValue() {
     const storedTabValue = localStorage.getItem("tab-value");
 
     if (storedTabValue) {
       setTabValue(storedTabValue);
     }
+  }
+
+  useEffect(() => {
+    getStoredTabValue();
   }, []);
 
   return (
@@ -33,7 +37,7 @@ export default function ReleasesTabList() {
           localStorage.setItem("tab-value", value);
         }}
       />
-      {tabValue === "games" && <GameReleases />}
+      {tabValue === "games" && <GamesReleases />}
       {tabValue === "movies" && <MoviesReleases />}
       {tabValue === "anime" && <AnimeReleases />}
     </>
