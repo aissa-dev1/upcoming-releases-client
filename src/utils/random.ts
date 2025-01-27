@@ -40,6 +40,18 @@ class Random {
     return id;
   }
 
+  strongIdWithoutSymbols(): string {
+    const allChars = `${this.characters}${this.upperCharacters}${this.numbers}`;
+    let id = "";
+
+    for (let i = 0; i < this.baseLength; i++) {
+      const randomIndex = Math.floor(Math.random() * allChars.length);
+      id = `${id}${allChars[randomIndex]}`;
+    }
+
+    return id;
+  }
+
   PIN(): number {
     let pin = "";
 
