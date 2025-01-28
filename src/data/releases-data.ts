@@ -1,19 +1,19 @@
-import { ReleaseCategoryContainerProps } from "@/components/pages/home/release-category-container";
-import { random } from "@/utils/random";
+import { ReleaseCategoryContainerProps } from "@/components/releases/release-category-container";
 
 export const gamesReleasesData: ReleaseCategoryContainerProps[] = [
   {
+    id: "1",
     heading: "Jan, 2025",
     categoryList: [
       {
-        id: random.strongIdWithoutSymbols(),
+        id: "1",
         title: "Clash of Clans",
         description: "Strategy",
         category: "games",
         tags: ["Google play", "App store"],
       },
       {
-        id: random.strongIdWithoutSymbols(),
+        id: "2",
         title: "Clash Royale",
         description: "Strategy",
         category: "games",
@@ -22,17 +22,18 @@ export const gamesReleasesData: ReleaseCategoryContainerProps[] = [
     ],
   },
   {
+    id: "2",
     heading: "Feb, 2025",
     categoryList: [
       {
-        id: random.strongIdWithoutSymbols(),
+        id: "3",
         title: "Clash of Clans",
         description: "Strategy",
         category: "games",
         tags: ["Google play", "App store"],
       },
       {
-        id: random.strongIdWithoutSymbols(),
+        id: "4",
         title: "Clash Royale",
         description: "Strategy",
         category: "games",
@@ -41,17 +42,18 @@ export const gamesReleasesData: ReleaseCategoryContainerProps[] = [
     ],
   },
   {
+    id: "3",
     heading: "Mar, 2025",
     categoryList: [
       {
-        id: random.strongIdWithoutSymbols(),
+        id: "5",
         title: "Clash of Clans",
         description: "Strategy",
         category: "games",
         tags: ["Google play", "App store"],
       },
       {
-        id: random.strongIdWithoutSymbols(),
+        id: "6",
         title: "Clash Royale",
         description: "Strategy",
         category: "games",
@@ -63,10 +65,11 @@ export const gamesReleasesData: ReleaseCategoryContainerProps[] = [
 
 export const moviesReleasesData: ReleaseCategoryContainerProps[] = [
   {
+    id: "1",
     heading: "Jan, 2025",
     categoryList: [
       {
-        id: random.strongIdWithoutSymbols(),
+        id: "1",
         title: "The 500 days of summer",
         description: "Romantic",
         category: "movies",
@@ -78,10 +81,11 @@ export const moviesReleasesData: ReleaseCategoryContainerProps[] = [
 
 export const animeReleasesData: ReleaseCategoryContainerProps[] = [
   {
+    id: "1",
     heading: "Jan, 2025",
     categoryList: [
       {
-        id: random.strongIdWithoutSymbols(),
+        id: "1",
         title: "Death Note",
         description: "Psychological",
         category: "anime",
@@ -90,3 +94,16 @@ export const animeReleasesData: ReleaseCategoryContainerProps[] = [
     ],
   },
 ];
+
+export const releasesCategories = ["games", "movies", "anime"] as const;
+
+export type ReleaseCategoryType = (typeof releasesCategories)[number];
+
+export const releasesData: Record<
+  ReleaseCategoryType,
+  ReleaseCategoryContainerProps[]
+> = {
+  games: gamesReleasesData,
+  movies: moviesReleasesData,
+  anime: animeReleasesData,
+};
