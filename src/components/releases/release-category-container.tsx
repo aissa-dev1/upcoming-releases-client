@@ -1,9 +1,9 @@
 import { H3 } from "@/components/typography";
 import { ReleaseCategory, ReleaseCategoryProps } from "./release-category";
 import { Card } from "@/components/card";
-import { random } from "@/utils/random";
 
 export interface ReleaseCategoryContainerProps {
+  id: string;
   heading: string;
   categoryList?: ReleaseCategoryProps[];
 }
@@ -19,7 +19,7 @@ export function ReleaseCategoryContainer({
         <Card>
           {categoryList.map((category) => (
             <ReleaseCategory
-              key={random.strongId()}
+              key={category.id}
               {...category}
               showDivider={
                 category.showDivider ||

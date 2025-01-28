@@ -2,9 +2,12 @@
 
 import TabList from "@/components/tab-list";
 import { useEffect, useState } from "react";
-import GamesReleases from "./games-releases";
-import MoviesReleases from "./movies-releases";
-import AnimeReleases from "./anime-releases";
+import Releases from "@/components/releases/releases";
+import {
+  animeReleasesData,
+  gamesReleasesData,
+  moviesReleasesData,
+} from "@/data/releases-data";
 
 const releasesTabs = [
   { value: "games", content: "Games" },
@@ -37,9 +40,9 @@ export default function ReleasesTabList() {
           localStorage.setItem("tab-value", value);
         }}
       />
-      {tabValue === "games" && <GamesReleases />}
-      {tabValue === "movies" && <MoviesReleases />}
-      {tabValue === "anime" && <AnimeReleases />}
+      {tabValue === "games" && <Releases list={gamesReleasesData} />}
+      {tabValue === "movies" && <Releases list={moviesReleasesData} />}
+      {tabValue === "anime" && <Releases list={animeReleasesData} />}
     </>
   );
 }

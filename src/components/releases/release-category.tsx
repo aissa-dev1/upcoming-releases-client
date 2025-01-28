@@ -30,7 +30,7 @@ export function ReleaseCategory({
         {Array.isArray(tags) && (
           <div className="flex gap-1">
             {tags.map((tag, index) => (
-              <React.Fragment key={id}>
+              <React.Fragment key={tag}>
                 <P size="sm" className="text-gray-foreground capitalize">
                   {tag}
                 </P>
