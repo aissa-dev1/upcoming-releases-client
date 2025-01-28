@@ -1,7 +1,6 @@
 import React from "react";
 import { Tabs, TabsList, TabsTrigger } from "./tabs";
 import { cn } from "@/utils/cn";
-import { random } from "@/utils/random";
 
 type Tab = {
   value: string;
@@ -22,7 +21,7 @@ export default function TabList({ value, onValueChange, tabs }: TabListProps) {
           {tabs.map((tab) => (
             <TabsTrigger
               className={cn("data-[state=active]:bg-gray-background")}
-              key={random.numId()}
+              key={tab.value}
               value={tab.value}
             >
               {tab.content}
