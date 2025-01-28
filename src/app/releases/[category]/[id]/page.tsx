@@ -4,27 +4,36 @@ import { Button } from "@/components/button";
 import Container from "@/components/container";
 import Footer from "@/components/footer";
 import NavBar from "@/components/nav-bar";
-import { ReleaseCategoryProps } from "@/components/pages/home/release-category";
+import { ReleaseCategoryProps } from "@/components/releases/release-category";
 import { H3, P } from "@/components/typography";
-import { moviesReleasesData } from "@/data/releases-data";
+import {
+  ReleaseCategoryType,
+  releasesCategories,
+  releasesData,
+} from "@/data/releases-data";
 import Link from "next/link";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function MovieReleasePage() {
-  const { id } = useParams();
+export default function ReleasePage() {
+  const { category, id } = useParams();
   const router = useRouter();
-  const [movieRelease, setMovieRelease] = useState<ReleaseCategoryProps>();
+  const [release, setRelease] = useState<ReleaseCategoryProps>();
 
-  function checkMovieReleaseExists() {
+  function checkReleaseExists() {
     let found = false;
 
-    for (const release of moviesReleasesData) {
-      if (typeof release.categoryList === "undefined") continue;
+    if (!releasesCategories.includes(category as ReleaseCategoryType)) {
+      router.push("/");
+      return;
+    }
 
-      for (const category of release.categoryList) {
-        if (category.id === id) {
-          setMovieRelease(category);
+    for (const releaseItem of releasesData[category as ReleaseCategoryType]) {
+      if (typeof releaseItem.categoryList === "undefined") continue;
+
+      for (const categoryItem of releaseItem.categoryList) {
+        if (categoryItem.id === id) {
+          setRelease(categoryItem);
           found = true;
           break;
         }
@@ -38,10 +47,10 @@ export default function MovieReleasePage() {
   }
 
   useEffect(() => {
-    checkMovieReleaseExists();
+    checkReleaseExists();
   }, [id, router]);
 
-  if (!movieRelease) return null;
+  if (!release) return null;
 
   return (
     <>
@@ -51,8 +60,8 @@ export default function MovieReleasePage() {
           <Button>Home</Button>
         </Link>
         <div className="flex flex-col gap-sm">
-          <H3>{movieRelease.title}</H3>
-          <P>{movieRelease.description}</P>
+          <H3>{release.title}</H3>
+          <P>{release.description}</P>
         </div>
       </Container>
       <Footer />
